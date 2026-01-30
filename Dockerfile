@@ -17,7 +17,7 @@ COPY package*.json ./
 RUN npm install --production
 
 # 复制应用代码
-COPY server.js ./
+COPY index.js ./
 
 # 创建临时文件目录
 RUN mkdir -p ./tmp
@@ -30,4 +30,4 @@ HEALTHCHECK --interval=30s --timeout=10s --start-period=40s --retries=3 \
     CMD curl -f http://localhost:3000/health || exit 1
 
 # 启动应用
-CMD ["node", "server.js"]
+CMD ["node", "index.js"]
